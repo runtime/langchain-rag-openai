@@ -3,9 +3,8 @@ from langchain_community.document_loaders import PyPDFLoader
 #splitter lib
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
-#import
+#global utils function for embeddings
 from get_embedding_function import get_embedding_function
-
 #chroma
 from langchain_community.vectorstores import Chroma
 import openai
@@ -59,17 +58,18 @@ def split_documents(documents: list[Document]):
 
 # multi use for storing and retrieving
 def get_embeddings():
-    #interface to global function
     embeddings = get_embedding_function()
     return embeddings
 
+#creates a new database
 def add_to_chroma(chunks):
     if os.path.exists(CHROMA_PATH):
+        print('[load_pdf] chroma db already exists')
         shutil.rmtree(CHROMA_PATH)
     vectordb = Chroma.from_documents(documents=chunks, embedding = get_embeddings(), persist_directory=CHROMA_PATH)
     print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")
 
-#add to chroma persistent existing db. credit to pixegami for the chunking with ids to solve the page vs chunk id issue
+#add to existing chroma db. credit to pixegami for the chunking with ids to solve the page vs chunk id issue
 # def add_to_chroma(chunks: list[Document]):
 #     # Load the existing database.
 #     db = Chroma(
