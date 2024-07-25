@@ -66,7 +66,7 @@ def add_to_chroma(chunks):
     if os.path.exists(CHROMA_PATH):
         print('[load_pdf] chroma db already exists')
         shutil.rmtree(CHROMA_PATH)
-    vectordb = Chroma.from_documents(documents=chunks, embedding = get_embeddings(), persist_directory=CHROMA_PATH)
+    vectordb = Chroma.from_documents(documents=chunks, embedding=get_embeddings(), persist_directory=CHROMA_PATH)
     print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")
 
 #add to existing chroma db. credit to pixegami for the chunking with ids to solve the page vs chunk id issue
@@ -80,7 +80,7 @@ def add_to_chroma(chunks):
 #     chunks_with_ids = calculate_chunk_ids(chunks)
 #
 #     # Add or Update the documents.
-#     existing_items = db.get(include=[])  # IDs are always included by default
+#     existing_items = db.get(include=[])  # IDs are always included by default?"
 #     existing_ids = set(existing_items["ids"])
 #     print(f"Number of existing documents in DB: {len(existing_ids)}")
 #
