@@ -14,12 +14,13 @@ import os
 #DB persistence
 import shutil
 
-FILE_PATH = "data/2760342_PM_EN.pdf"
+FILE_PATH = "data/DHT11-Technical-Sheet.pdf"
 CHROMA_PATH = "chroma_db"
 load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 
 def main():
+    print("f[main]")
     init()
 
 def init():
@@ -125,14 +126,14 @@ def add_to_chroma(chunks):
 #         # Add it to the page meta-data.
 #         chunk.metadata["id"] = chunk_id
 #
-#     return chunks
-#
-#
-#     def clear_database():
-#         if os.path.exists(CHROMA_PATH):
-#             shutil.rmtree(CHROMA_PATH)
-#
-#
+#         return chunks
 
-    if __name__ == "__main__":
-        main()
+
+    def clear_database():
+        if os.path.exists(CHROMA_PATH):
+            shutil.rmtree(CHROMA_PATH)
+
+
+
+if __name__ == "__main__":
+    main()
