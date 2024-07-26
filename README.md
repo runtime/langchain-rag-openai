@@ -21,13 +21,15 @@ pip install -r requirements.txt
 This project uses Langchain document_loaders to parse the PDF
 https://python.langchain.com/v0.1/docs/modules/data_connection/document_loaders/pdf/
 
+```python
+pip install pyPDF
 
 ### Create local Chroma database
 
 Create a local Chroma DB. You can save it and upload to OpenAI or other vector store.
 
 ```python
-python create_database.py
+python load_pdf.py
 ```
 
 ## Query the database
