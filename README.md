@@ -7,10 +7,9 @@ Requirements:
 * Embeddings (openAI) 
 * Store in Vector DB (Chroma) 
 * Test our embeddings (pyTest)
-* Retrieve with search query
+* Retrieve with search query (nistral)
 
 ## Install dependencies
-
 run this command to install dependencies in the `requirements.txt` file. 
 
 ```python

@@ -14,8 +14,6 @@ import os
 import shutil
 
 
-
-
 CHROMA_PATH = "chroma_db"
 FILE_PATH = "data"
 
@@ -25,8 +23,7 @@ def main():
     init()
 
 def init():
-    print("f[init] ✨")
-
+    print("f[init]")
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
@@ -44,7 +41,6 @@ def init():
     chunks = split_documents(documents)
     #print("f[init] chunks[0]:  ", chunks[0])
     add_to_chroma(chunks)
-
 
 
 # def load_pdf(FILE_PATH: str) -> list[str]:
@@ -148,8 +144,6 @@ def calculate_chunk_ids(chunks):
 def clear_database():
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
-
-
 
 if __name__ == "__main__":
     main()
