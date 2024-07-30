@@ -1,6 +1,8 @@
-# Langchain RAG w/OpenAI 
+# Aruino Sensor RAG w/OpenAI Embedding & Mistral (on Ollama) for Query Match
 
-Requirements: 
+This is an MVP of a LLM Document Search RAG. 
+
+Requirements Doc:
 * Scan PDF (pypdf) (AWS Textract)
 * Create pages
 * Chunk pages (langchain) 
@@ -9,36 +11,46 @@ Requirements:
 * Test our embeddings (pyTest)
 * Retrieve with search query (nistral)
 
-## Install dependencies
+## Use Guide
+### Install dependencies
 run this command to install dependencies in the `requirements.txt` file. 
 
 ```python
 pip install -r requirements.txt
 ```
 
-### Parse a PDF
-This project uses Langchain document_loaders to parse the PDF
-https://python.langchain.com/v0.1/docs/modules/data_connection/document_loaders/pdf/
 
+
+
+## Installs
 ```python
-pip install pyPDF
+pip install pytest 
+pip install pyPdf
+```
 
-### Create local Chroma database
+## Step 1: Start or Add to Existing Chroma db
 
-Create a local Chroma DB. You can save it and upload to OpenAI or other vector store.
+To Scan all the pdf files in the data folder and put them into the RAG run:
 
 ```python
 python load_pdf.py
 ```
+This will scan the pdfs using pypdf through langchain document loader, split the docs into pages and then will chunk it. Chunks are embedded and stored in Chroma
+## Step 2: Query the database
 
-## Query the database
-
-Query the Chroma DB.
+Query the Chroma DB and use Mistral to create an answer
 
 ```python
 python query_data.py "Your question relevant to the context of the application"
 ```
 
-> Project assumes a .env file. Use EnvFile plugin for PyCharm if using an IDE
+## Step 3: Test the Query Returns using PyTest and Mistral
 
-based on pixegami tutorial on langchain
+Test Mistral's answers using PyTest 
+
+```python
+pytest test_cases.py
+```
+
+
+Thanks to pixegami tutorial for pyTest and langchain chunking
