@@ -1,4 +1,4 @@
-# Aruino Sensor RAG w/OpenAI Embedding & Mistral (on Ollama) for Query Match
+# Arduino Sensor RAG w/OpenAI Embedding & Mistral (on Ollama) for Query Match
 
 This is an MVP of a LLM Document Search RAG. 
 
@@ -51,6 +51,3 @@ Test Mistral's answers using PyTest
 ```python
 pytest test_cases.py
 ```
-
-
-Thanks to pixegami tutorial for pyTest and langchain chunking
