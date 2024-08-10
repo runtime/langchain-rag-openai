@@ -12,6 +12,13 @@ from langchain_community.vectorstores import Chroma
 import os
 #DB persistence
 import shutil
+import logging
+
+
+logging.basicConfig(level=logging.INFO);
+logger = logging.getLogger(__name__)
+
+logger.setLevel(logging.INFO)
 
 
 CHROMA_PATH = "chroma_db"
@@ -29,6 +36,7 @@ def init():
     args = parser.parse_args()
     if args.reset:
         print("✨ Clearing Database")
+        logger.log(msg='wipeed db')
         clear_database()
 
     # Create (or update) the data store.
@@ -90,7 +98,6 @@ def add_to_chroma(chunks: list[Document]):
 
     # Calculate Page IDs.
     chunks_with_ids = calculate_chunk_ids(chunks)
-
     # Add or Update the documents.
     existing_items = db.get(include=[])  # IDs are always included by default?"
     existing_ids = set(existing_items["ids"])
